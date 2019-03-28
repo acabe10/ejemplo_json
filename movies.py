@@ -34,6 +34,13 @@ def comprobador(doc,palabras):
 		else:
 			return False
 
+def actor_pelis(doc,actor):
+	pelis=[]
+	for i in doc:
+		if actor in i["actors"]:
+			pelis.append(i["title"])
+	return pelis
+
 while True:
 	print()
 	print("1.Listar el título, año y duración de todas las películas.")
@@ -82,6 +89,13 @@ while True:
 		else:
 			print()
 			print("No hay palabras que coincidan.")
+
+	elif opcion == 4:
+		actor=input("Dime un actor")
+		print("El actor %s ha trabajado en las siguientes películas"%actor)
+		for pelis in actor_pelis(doc,actor):
+			print(pelis)
+			print("_"*50)
 
 	else:
 		print()
