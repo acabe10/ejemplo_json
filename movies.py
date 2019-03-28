@@ -51,13 +51,15 @@ def actor_esta(doc,actor):
 def peli_fecha(doc,fecha_ini,fecha_fin):
 	pelis=[]
 	posters=[]
+	puntuacion=[]
 	fecha_ini = fecha_ini.strip("-")
 	fecha_fin = fecha_fin.strip("-")
 	for i in doc:
 		if i["releaseDate"].strip("-") >= fecha_ini and i["releaseDate"] <= fecha_fin:
 			pelis.append(i["title"])
 			posters.append(i["posterurl"])
-	return zip(pelis,posters)
+			puntuacion.append(i["ratings"])
+	return zip(pelis,posters,puntuacion)
 
 
 while True:
@@ -125,11 +127,12 @@ while True:
 	elif opcion == 5:
 		fecha_ini=input("Dime la fecha inicial(AAAA-MM-DD): ")
 		fecha_fin=input("Dime la fecha final(AAAA-MM-DD): ")
-		for peli in peli_fecha(doc,fecha_ini,fecha_fin):
-			if len(peli) == 0:
-				print("Ha introducido un formato incorrecto o no tenemos resultados.")
-			else: 
-				print(peli)
+		for peli,poster,puntuacion in peli_fecha(doc,fecha_ini,fecha_fin):
+			print()
+			print("Película: ",peli)
+			print("URL póster: ",poster)
+			print(round(sum(puntuacion)/len(puntuacion),2))
+			print("_"*50)
 
 	else:
 		print()
