@@ -24,7 +24,7 @@ def palabras_dadas(doc,palabras):
 	sipnosis=[]
 	for i in doc:
 		sipnosis.append(i["storyline"])
-	
+
 
 while True:
 	print()
@@ -64,6 +64,8 @@ while True:
 		for i in range(2):
 			palabra = input("Palabra: ")
 			palabras.append(palabra)
+		for pelis in palabras_dadas(doc,palabras):
+			print(pelis)
 
 
 	else:
