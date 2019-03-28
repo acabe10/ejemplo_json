@@ -110,6 +110,10 @@ while True:
 			print()
 			print("No se encuentra el actor.")
 
+	elif opcion == 5:
+		fecha_ini=input("Dime la fecha inicial(AAAA-MM-DD): ")
+		fecha_fin=input("Dime la fecha final(AAAA-MM-DD): ")
+
 	else:
 		print()
 		print("Error de opción")
