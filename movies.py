@@ -22,8 +22,10 @@ def pelis_actores(doc):
 
 def palabras_dadas(doc,palabras):
 	sipnosis=[]
-	for i in doc:
-		sipnosis.append(i["storyline"])
+	for palabra in palabras:
+		for i in doc:
+			if palabra in i["storyline"]:
+
 
 
 while True:
@@ -60,11 +62,9 @@ while True:
 			print("_"*50)
 
 	elif opcion == 3:
-		palabras=[]
-		for i in range(2):
-			palabra = input("Palabra: ")
-			palabras.append(palabra)
-		for pelis in palabras_dadas(doc,palabras):
+		palabra_1 = input("Palabra 1: ")
+		palabra_2 = input("Palabra 2: ")
+		for pelis in palabras_dadas(doc,palabra_1,palabra_2):
 			print(pelis)
 
 
