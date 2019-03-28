@@ -41,6 +41,13 @@ def actor_pelis(doc,actor):
 			pelis.append(i["title"])
 	return pelis
 
+def actor_esta(doc,actor):
+	for i in doc:
+		if actor in i["actors"]:
+			return True
+		else:
+			return False
+
 while True:
 	print()
 	print("1.Listar el título, año y duración de todas las películas.")
@@ -91,11 +98,17 @@ while True:
 			print("No hay palabras que coincidan.")
 
 	elif opcion == 4:
-		actor=input("Dime un actor")
-		print("El actor %s ha trabajado en las siguientes películas"%actor)
-		for pelis in actor_pelis(doc,actor):
-			print(pelis)
-			print("_"*50)
+		actor=input("Dime un actor: ").title()
+		comprobacion = actor_esta(doc,actor)
+		if comprobacion == True:
+			print("El actor %s ha trabajado en las siguientes películas"%actor)
+			print()
+			for pelis in actor_pelis(doc,actor):
+				print(pelis)
+				print("_"*50)
+		else:
+			print()
+			print("No se encuentra el actor.")
 
 	else:
 		print()
