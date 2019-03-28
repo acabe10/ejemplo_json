@@ -32,9 +32,10 @@ while True:
 
 	elif opcion == 1:
 		for titulo,year,duracion in listar(doc):
-			print(titulo)
-			print(year)
-			print(duracion.strip("PT").strip("M"))
+			print("Título: ",titulo)
+			print("Año: ",year)
+			print("Duración: ",duracion.strip("PT").strip("M"),"minutos")
+			print("_"*50)
 	    
 	else:
 		print()
