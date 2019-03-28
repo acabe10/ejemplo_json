@@ -48,6 +48,18 @@ def actor_esta(doc,actor):
 		else:
 			return False
 
+def peli_fecha(doc,fecha_ini,fecha_fin):
+	pelis=[]
+	posters=[]
+	fecha_ini = fecha_ini.strip("-")
+	fecha_fin = fecha_fin.strip("-")
+	for i in doc:
+		if i["releaseDate"].strip("-") >= fecha_ini and i["releaseDate"] <= fecha_fin:
+			pelis.append(i["title"])
+			posters.append(i["posterurl"])
+	return zip(pelis,posters)
+
+
 while True:
 	print()
 	print("1.Listar el título, año y duración de todas las películas.")
@@ -113,6 +125,11 @@ while True:
 	elif opcion == 5:
 		fecha_ini=input("Dime la fecha inicial(AAAA-MM-DD): ")
 		fecha_fin=input("Dime la fecha final(AAAA-MM-DD): ")
+		for peli in peli_fecha(doc,fecha_ini,fecha_fin):
+			if len(peli) == 0:
+				print("Ha introducido un formato incorrecto o no tenemos resultados.")
+			else: 
+				print(peli)
 
 	else:
 		print()
