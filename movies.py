@@ -12,6 +12,14 @@ def listar(doc):
 		duracion.append(info["duration"])
 	return zip(peliculas,year,duracion)
 
+def pelis_actores(doc):
+	titulos=[]
+	actores=[]
+	for i in doc:
+		titulos.append(i["title"])
+		actores.append(i["actors"])
+	return zip(titulos,actores)
+
 while True:
 	print()
 	print("1.Listar el título, año y duración de todas las películas.")
@@ -36,7 +44,15 @@ while True:
 			print("Año: ",year)
 			print("Duración: ",duracion.strip("PT").strip("M"),"minutos")
 			print("_"*50)
-	    
+
+	elif opcion == 2:
+		for titulo,actores in pelis_actores(doc):
+			print("Título: ",titulo)
+			print("Actores:")
+			for i in actores:
+				print(i)
+			print("_"*50)
+
 	else:
 		print()
 		print("Error de opción")
