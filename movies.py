@@ -23,9 +23,16 @@ def pelis_actores(doc):
 def palabras_dadas(doc,palabras):
 	pelis=[]
 	for i in doc:
-		if palabra[0] and palabra[1] in i["storyline"]:
+		if palabras[0] and palabras[1] in i["storyline"]:
 			pelis.append(i["title"])
 	return pelis
+
+def comprobador(doc,palabras):
+	for i in doc:
+		if palabras[0] and palabras[1] in i["storyline"]:
+			return True
+		else:
+			return False
 
 while True:
 	print()
@@ -65,9 +72,16 @@ while True:
 		for i in range(2):
 			palabra = input("Palabra %i: "% (i+1))
 			palabras.append(palabra)
-		for pelis in palabras_dadas(doc,palabras):
-			print(pelis)
-
+		comprobacion=comprobador(doc,palabras)
+		if comprobacion == True:
+			print("Las palabras %s y %s están en la sipnosis de las siguientes películas:" % (palabras[0],palabras[1]))
+			print()
+			for pelis in palabras_dadas(doc,palabras):
+				print(pelis)
+				print("_"*50)
+		else:
+			print()
+			print("No hay palabras que coincidan.")
 
 	else:
 		print()
