@@ -2,6 +2,16 @@ import json
 with open("movies.json") as fichero:
 	doc=json.load(fichero)
 
+def listar(doc):
+	peliculas=[]
+	year=[]
+	duracion=[]
+	for info in doc:
+		peliculas.append(info["title"])
+		year.append(info["year"])
+		duracion.append(info["duration"])
+	return zip(peliculas,year,duracion)
+
 while True:
 	print()
 	print("1.Listar el título, año y duración de todas las películas.")
@@ -20,8 +30,11 @@ while True:
 		print()
 		break;
 
-#	elif opcion == 1:
-		
+	elif opcion == 1:
+		for titulo,year,duracion in listar(doc):
+			print(titulo)
+			print(year)
+			print(duracion.strip("PT").strip("M"))
 	    
 	else:
 		print()
