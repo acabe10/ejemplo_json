@@ -18,7 +18,7 @@ def pelis_actores(doc):
 	actores=[]
 	for i in doc:
 		titulos.append(i["title"])
-		actores.append(i["actors"])
+		actores.append(len(i["actors"]))
 	return zip(titulos,actores)
 
 def palabras_dadas(doc,palabras):
@@ -92,10 +92,8 @@ while True:
 
 	elif opcion == 2:
 		for titulo,actores in pelis_actores(doc):
-			print("Título: ",titulo)
-			print("Actores:")
-			for i in actores:
-				print(i)
+			print("Título:",titulo)
+			print("Actores:",actores)
 			print("_"*50)
 
 	elif opcion == 3:
