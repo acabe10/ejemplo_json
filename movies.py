@@ -1,4 +1,5 @@
 import json
+import operator
 with open("movies.json") as fichero:
 	doc=json.load(fichero)
 
@@ -50,14 +51,14 @@ def actor_esta(doc,actor):
 
 def peli_fecha(doc,fecha_ini,fecha_fin):
 	pelis={}
-#	posters=[]
-#	puntuacion=[]
 	fecha_ini = fecha_ini.strip("-")
 	fecha_fin = fecha_fin.strip("-")
 	for i in doc:
 		if i["releaseDate"].strip("-") >= fecha_ini and i["releaseDate"] <= fecha_fin:
-			pelis[i["title"]]=len(i["rating"])/sum(i["rating"])
-#			posters.append(i["posterurl"])
+			pelis[i["title"]]=round(sum(i["ratings"])/len(i["ratings"]),2)
+	resultado = sorted(pelis.items(), key=operator.itemgetter(1))
+	resultado.reverse()
+	print(resultado[0:3])
 	return pelis
 
 while True:
@@ -125,10 +126,10 @@ while True:
 	elif opcion == 5:
 		fecha_ini=input("Dime la fecha inicial(AAAA-MM-DD): ")
 		fecha_fin=input("Dime la fecha final(AAAA-MM-DD): ")
-		for peli,poster in peli_fecha(doc,fecha_ini,fecha_fin):
-			print()
-			print("Película: ",peli)
-			print("URL póster: ",poster)
+		for peli in peli_fecha(doc,fecha_ini,fecha_fin):
+#			print()
+#			print("Película: ",peli)
+#			print("URL póster: ",poster)
 			print("_"*50)
 
 	else:
