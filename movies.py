@@ -49,17 +49,16 @@ def actor_esta(doc,actor):
 			return False
 
 def peli_fecha(doc,fecha_ini,fecha_fin):
-	pelis=[]
-	posters=[]
-	puntuacion=[]
+	pelis={}
+#	posters=[]
+#	puntuacion=[]
 	fecha_ini = fecha_ini.strip("-")
 	fecha_fin = fecha_fin.strip("-")
 	for i in doc:
 		if i["releaseDate"].strip("-") >= fecha_ini and i["releaseDate"] <= fecha_fin:
-			pelis.append(i["title"])
-			posters.append(i["posterurl"])
-			puntuacion.append(i["ratings"])
-	return zip(pelis,posters)
+			pelis[i["title"]]=len(i["rating"])/sum(i["rating"])
+#			posters.append(i["posterurl"])
+	return pelis
 
 while True:
 	print()
