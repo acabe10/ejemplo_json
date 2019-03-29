@@ -58,8 +58,7 @@ def peli_fecha(doc,fecha_ini,fecha_fin):
 			pelis[i["title"]]=round(sum(i["ratings"])/len(i["ratings"]),2)
 	resultado = sorted(pelis.items(), key=operator.itemgetter(1))
 	resultado.reverse()
-	print(resultado[0:3])
-	return pelis
+	return (resultado[0:3])
 
 while True:
 	print()
@@ -127,8 +126,8 @@ while True:
 		fecha_ini=input("Dime la fecha inicial(AAAA-MM-DD): ")
 		fecha_fin=input("Dime la fecha final(AAAA-MM-DD): ")
 		for peli in peli_fecha(doc,fecha_ini,fecha_fin):
-#			print()
-#			print("Película: ",peli)
+			print()
+			print("Película: ",peli[0])
 #			print("URL póster: ",poster)
 			print("_"*50)
 
