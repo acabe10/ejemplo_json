@@ -60,6 +60,13 @@ def peli_fecha(doc,fecha_ini,fecha_fin):
 	resultado.reverse()
 	return (resultado[0:3])
 
+def peli_url(doc,peli):
+	urls=[]
+	for i in doc:
+		if i["title"] == peli:
+			urls.append(i["posterurl"])
+	return urls
+
 while True:
 	print()
 	print("1.Listar el título, año y duración de todas las películas.")
@@ -128,7 +135,8 @@ while True:
 		for peli in peli_fecha(doc,fecha_ini,fecha_fin):
 			print()
 			print("Película: ",peli[0])
-#			print("URL póster: ",poster)
+			url_poster=peli_url(doc,peli[0])
+			print("URL póster: ",url_poster[0])
 			print("_"*50)
 
 	else:
