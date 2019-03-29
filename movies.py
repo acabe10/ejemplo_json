@@ -59,8 +59,7 @@ def peli_fecha(doc,fecha_ini,fecha_fin):
 			pelis.append(i["title"])
 			posters.append(i["posterurl"])
 			puntuacion.append(i["ratings"])
-	return zip(pelis,posters,puntuacion)
-
+	return zip(pelis,posters)
 
 while True:
 	print()
@@ -127,11 +126,10 @@ while True:
 	elif opcion == 5:
 		fecha_ini=input("Dime la fecha inicial(AAAA-MM-DD): ")
 		fecha_fin=input("Dime la fecha final(AAAA-MM-DD): ")
-		for peli,poster,puntuacion in peli_fecha(doc,fecha_ini,fecha_fin):
+		for peli,poster in peli_fecha(doc,fecha_ini,fecha_fin):
 			print()
 			print("Película: ",peli)
 			print("URL póster: ",poster)
-			print(round(sum(puntuacion)/len(puntuacion),2))
 			print("_"*50)
 
 	else:
