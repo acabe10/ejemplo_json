@@ -61,11 +61,9 @@ def peli_fecha(doc,fecha_ini,fecha_fin):
 	return (resultado[0:3])
 
 def peli_url(doc,peli):
-	urls=[]
 	for i in doc:
 		if i["title"] == peli:
-			urls.append(i["posterurl"])
-	return urls
+			return i["posterurl"]
 
 while True:
 	print()
@@ -136,7 +134,7 @@ while True:
 			print()
 			print("Película: ",peli[0])
 			url_poster=peli_url(doc,peli[0])
-			print("URL póster: ",url_poster[0])
+			print("URL póster: ",url_poster)
 			print("_"*50)
 
 	else:
